@@ -14,7 +14,7 @@ dotenv.config();
 const port = 8000 || process.env.PORT;
 
 const corsOptions = {
-  origin: "https://radiant-dodol-0888f0.netlify.app",
+  origin: ["https://radiant-dodol-0888f0.netlify.app","https://3w-socialmedia-task-internship.vercel.app"],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
 };
