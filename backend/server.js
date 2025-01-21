@@ -23,7 +23,7 @@ mongoose
   .catch((error) => console.error(error));
 
 app.get('/', (req,res) => {
-    res.send(<h1>hello world</h1>)
+    res.send("hello world");
 })
 
 app.post('/submit', upload.array('images', 5), async (req, res) => {
