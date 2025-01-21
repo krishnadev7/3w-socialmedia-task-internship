@@ -38,7 +38,7 @@ const AdminDashboard = () => {
               {user.images.map((image, idx) => (
                 <img
                   key={idx}
-                  src={`${import.meta.env.VITE_API_URL}${image}`}
+                  src={image}
                   alt={`Uploaded by ${user.name}`}
                   className="w-full h-24 object-cover rounded"
                 />

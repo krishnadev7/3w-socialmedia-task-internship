@@ -1,7 +1,9 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import upload from "./upload.js";
 import express from "express";
 import mongoose from "mongoose";
-import dotenv from "dotenv";
 import cors from "cors";
 import bodyParser from "body-parser";
 import { User } from "./models/User.js";
@@ -10,7 +12,6 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-dotenv.config();
 const port = 8000 || process.env.PORT;
 
 const corsOptions = {
@@ -36,7 +37,7 @@ app.get("/", (req, res) => {
 app.post("/submit", upload.array("images", 5), async (req, res) => {
   const { name, socialHandle } = req.body;
 
-  const imagePaths = req.files.map((file) => `/uploads/${file.filename}`);
+  const imagePaths = req.files.map((file) => file.path);
   try {
     const newUser = new User({ name, socialHandle, images: imagePaths });
     const saveduser = await newUser.save();
