@@ -23,12 +23,12 @@ mongoose
   .catch((error) => console.error(error));
 
 
-app.post('/submit', async (req, res) => {
+app.post('/submit', upload.array('images', 5), async (req, res) => {
     const { name, socialHandle } = req.body;
     
-    // const imagePaths = req.files.map(file => `/uploads/${file.filename}`);
+    const imagePaths = req.files.map(file => `/uploads/${file.filename}`);
     try {
-      const newUser = new User({ name, socialHandle,});
+      const newUser = new User({ name, socialHandle,images: imagePaths});
      const saveduser =  await newUser.save();
       res.status(201).json({ message: 'User data saved successfully',saveduser });
     } catch (error) {

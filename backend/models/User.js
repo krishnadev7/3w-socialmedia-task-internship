@@ -9,7 +9,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-//   images: [String],
+  images: [String],
 });
 
 export const User = new mongoose.model("User", UserSchema);
