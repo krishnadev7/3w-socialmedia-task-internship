@@ -22,6 +22,9 @@ mongoose
   .then(() => console.log("Mongodb Connected successfully"))
   .catch((error) => console.error(error));
 
+app.get('/', (req,res) => {
+    res.send(<h1>hello world</h1>)
+})
 
 app.post('/submit', upload.array('images', 5), async (req, res) => {
     const { name, socialHandle } = req.body;
